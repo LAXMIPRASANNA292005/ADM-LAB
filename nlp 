@@ -1,0 +1,163 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyOFjV7qhPFH38bfg7WBERwv",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/LAXMIPRASANNA292005/ADM-LAB/blob/main/nlp%20\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "OAMXBwKm1_Ns",
+        "outputId": "7ce2b154-0fd3-44fa-ce85-60ca2169dd95"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "word tokenization\n",
+            "tokens: ['i', 'had', 'my', 'breakfast', '.']\n",
+            "filtered tokens: ['breakfast', '.']\n"
+          ]
+        },
+        {
+          "output_type": "stream",
+          "name": "stderr",
+          "text": [
+            "[nltk_data] Downloading package punkt_tab to /root/nltk_data...\n",
+            "[nltk_data]   Package punkt_tab is already up-to-date!\n",
+            "[nltk_data] Downloading package stopwords to /root/nltk_data...\n",
+            "[nltk_data]   Package stopwords is already up-to-date!\n"
+          ]
+        }
+      ],
+      "source": [
+        "import nltk\n",
+        "nltk.download('punkt_tab')\n",
+        "from nltk.tokenize import word_tokenize\n",
+        "from nltk.corpus import stopwords\n",
+        "nltk.download('stopwords')\n",
+        "sentence=\"i had my breakfast.\"\n",
+        "tokens=word_tokenize(sentence)\n",
+        "print(\"word tokenization\")\n",
+        "print(\"tokens:\",tokens)\n",
+        "stop_words=set(stopwords.words('english'))\n",
+        "filtered_tokens=[word for word in tokens if word.lower()not in stop_words]\n",
+        "print(\"filtered tokens:\",filtered_tokens)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import nltk\n",
+        "from nltk.tokenize import word_tokenize\n",
+        "from nltk.stem import PorterStemmer\n",
+        "nltk.download('wordnet')\n",
+        "sentence=\"i had my breakfast.\"\n",
+        "tokens=word_tokenize(sentence)\n",
+        "print(\"word tokenization\")\n",
+        "print(tokens)\n",
+        "stemmer=PorterStemmer()\n",
+        "stemmer=[stemmer.stem(word)for word in tokens]\n",
+        "print(stemmer)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "-PvnJiVE6R1n",
+        "outputId": "ece52040-3cc1-4d36-c918-3d88824f7a0b"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "word tokenization\n",
+            "['i', 'had', 'my', 'breakfast', '.']\n",
+            "['i', 'had', 'my', 'breakfast', '.']\n"
+          ]
+        },
+        {
+          "output_type": "stream",
+          "name": "stderr",
+          "text": [
+            "[nltk_data] Downloading package wordnet to /root/nltk_data...\n",
+            "[nltk_data]   Package wordnet is already up-to-date!\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import nltk\n",
+        "from nltk.tokenize import word_tokenize\n",
+        "from nltk.stem import WordNetLemmatizer\n",
+        "nltk.download('wordnet')\n",
+        "\n",
+        "sentence=\"I had my breakfast.\"\n",
+        "tokens=word_tokenize(sentence)\n",
+        "print(\"word tokenization\")\n",
+        "print(\"tokens:\",tokens)\n",
+        "lemmatizer=WordNetLemmatizer()\n",
+        "L_tokens=[lemmatizer.lemmatize(word)for word in tokens]\n",
+        "print(\"lemmaword is:\", L_tokens)"
+      ],
+      "metadata": {
+        "id": "CKPAAn9m9Lsl",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "dd8327cf-3edb-4d76-c68b-d03bab82114b"
+      },
+      "execution_count": 8,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stderr",
+          "text": [
+            "[nltk_data] Downloading package wordnet to /root/nltk_data...\n",
+            "[nltk_data]   Package wordnet is already up-to-date!\n"
+          ]
+        },
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "word tokenization\n",
+            "tokens: ['I', 'had', 'my', 'breakfast', '.']\n",
+            "lemmaword is: ['I', 'had', 'my', 'breakfast', '.']\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
